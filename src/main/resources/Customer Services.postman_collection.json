@@ -1,0 +1,426 @@
+{
+  "info": {
+    "_postman_id": "36005c87-9d8d-4298-ac2d-b1c8e68dc484",
+    "name": "Customer Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28641721"
+  },
+  "item": [
+    {
+      "name": "add-purchase",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"customerId\": \"{{customerId}}\",\r\n  \"amount\": 120.00\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localUrl}}/customer-services/api/v1/add-purchase",
+          "host": [
+            "{{localUrl}}"
+          ],
+          "path": [
+            "customer-services",
+            "api",
+            "v1",
+            "add-purchase"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "add-purchase-success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"customerId\": \"{{customerId}}\",\r\n  \"amount\": 100.00\r\n//   \"purchaseDate\": \"2025-09-21\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localUrl}}/customer-services/api/v1/add-purchase",
+              "host": [
+                "{{localUrl}}"
+              ],
+              "path": [
+                "customer-services",
+                "api",
+                "v1",
+                "add-purchase"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 26 Aug 2025 08:54:17 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"timestamp\": 1756198457347,\n    \"pointsEarned\": 50,\n    \"totalRewardPoints\": 50\n}"
+        }
+      ]
+    },
+    {
+      "name": "add-customer",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set('customerId',pm.response.json().data.customerId);\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\r\n    \"name\": \"Narmada\",\r\n    \"mobileNumber\": \"9876543210\",\r\n    \"emailId\": \"test@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localUrl}}/customer-services/api/v1/customers/add",
+          "host": [
+            "{{localUrl}}"
+          ],
+          "path": [
+            "customer-services",
+            "api",
+            "v1",
+            "customers",
+            "add"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "add-purchase-success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"customerId\": \"{{customerId}}\",\r\n  \"amount\": 100.00\r\n//   \"purchaseDate\": \"2025-09-21\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localUrl}}/customer-services/api/v1/add-purchase",
+              "host": [
+                "{{localUrl}}"
+              ],
+              "path": [
+                "customer-services",
+                "api",
+                "v1",
+                "add-purchase"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 26 Aug 2025 08:54:17 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"timestamp\": 1756198457347,\n    \"pointsEarned\": 50,\n    \"totalRewardPoints\": 50\n}"
+        },
+        {
+          "name": "add-customer-success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\r\n    \"name\": \"Narmada\",\r\n    \"mobileNumber\": \"9876543210\",\r\n    \"emailId\": \"test@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localUrl}}/customer-services/api/v1/customers/add",
+              "host": [
+                "{{localUrl}}"
+              ],
+              "path": [
+                "customer-services",
+                "api",
+                "v1",
+                "customers",
+                "add"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "91"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Sep 2025 15:29:06 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"timestamp\": 1756913346732,\n    \"customerId\": \"CUST0001\",\n    \"message\": \"Customer Added Successfully\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "get-rewards",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"customerId\": \"CUST0001\",\r\n  \"amount\": 120.50,\r\n  \"purchaseDate\": \"2025-08-20\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{localUrl}}/customer-services/api/v1/get-rewards/{{customerId}}?startDate=2025-09-02&endDate=2025-09-27",
+          "host": [
+            "{{localUrl}}"
+          ],
+          "path": [
+            "customer-services",
+            "api",
+            "v1",
+            "get-rewards",
+            "{{customerId}}"
+          ],
+          "query": [
+            {
+              "key": "startDate",
+              "value": "2025-09-02"
+            },
+            {
+              "key": "endDate",
+              "value": "2025-09-27"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "get-rewards",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"customerId\": \"CUST0001\",\r\n  \"amount\": 120.50,\r\n  \"purchaseDate\": \"2025-08-20\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localUrl}}/customer-services/api/v1/get-rewards/{{customerId}}?startDate=2025-09-02&endDate=2025-09-27",
+              "host": [
+                "{{localUrl}}"
+              ],
+              "path": [
+                "customer-services",
+                "api",
+                "v1",
+                "get-rewards",
+                "{{customerId}}"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2025-09-02"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-09-27"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "275"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Sep 2025 15:29:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"timestamp\": 1756913366064,\n    \"customerId\": \"CUST0001\",\n    \"name\": \"Narmada\",\n    \"mobileNumber\": \"9876543210\",\n    \"emailId\": \"test@gmail.com\",\n    \"monthlyRewards\": [\n        {\n            \"month\": \"2025-09\",\n            \"points\": 90\n        }\n    ],\n    \"totalRewards\": 90,\n    \"recentPurchases\": [\n        {\n            \"purchaseDate\": \"2025-09-03\",\n            \"amount\": 120,\n            \"rewardPoints\": 90\n        }\n    ]\n}"
+        },
+        {
+          "name": "get-rewards",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"customerId\": \"CUST0001\",\r\n  \"amount\": 120.50,\r\n  \"purchaseDate\": \"2025-08-20\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localUrl}}/customer-services/api/v1/get-rewards/{{customerId}}?startDate=2025-09-02&endDate=2025-09-27",
+              "host": [
+                "{{localUrl}}"
+              ],
+              "path": [
+                "customer-services",
+                "api",
+                "v1",
+                "get-rewards",
+                "{{customerId}}"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2025-09-02"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2025-09-27"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "275"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 03 Sep 2025 15:29:26 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"timestamp\": 1756913366064,\n    \"customerId\": \"CUST0001\",\n    \"name\": \"Narmada\",\n    \"mobileNumber\": \"9876543210\",\n    \"emailId\": \"test@gmail.com\",\n    \"monthlyRewards\": [\n        {\n            \"month\": \"2025-09\",\n            \"points\": 90\n        }\n    ],\n    \"totalRewards\": 90,\n    \"recentPurchases\": [\n        {\n            \"purchaseDate\": \"2025-09-03\",\n            \"amount\": 120,\n            \"rewardPoints\": 90\n        }\n    ]\n}"
+        }
+      ]
+    }
+  ]
+}

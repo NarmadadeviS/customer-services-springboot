@@ -16,7 +16,8 @@ cd customer-services-springboot
 
 # Customer Services API
 
-This project is a Spring Boot-based REST API that calculates and retrieves reward points earned by customers based on
+This project is a Spring Boot-based REST API that add customer details, calculates and retrieves reward points earned by
+customers based on
 their purchase history. The reward calculation follows a tiered system and allows querying for reward summaries within a
 specific date range.
 
@@ -24,6 +25,7 @@ specific date range.
 
 ## Features
 
+- Add customer
 - Add purchases for a customer along with reward points
 - Reward Calculation Logic
   - No rewards for purchases below or equal to $50
@@ -61,31 +63,65 @@ specific date range.
 
 ### Data Flow
 
-1. **Add Purchase API**
+1.**Add Customer API**
+
+- Accepts customer info via DTO.
+- Generate a Customer ID.
+- Saves customer info to DB.
+
+2.**Add Purchase API**
 
 - Accepts purchase info via DTO.
 - Calculates reward points.
 - Saves to DB and returns total reward points.
 
-2. **Get Rewards API**
+3.**Get Rewards API**
 
 - Accepts customerId and date range.
 - Fetches purchase data from DB.
-- Aggregates monthly and total reward points.
+- customer details, Aggregates monthly and total reward points.
 - Returns a structured response DTO.
+
+
 
 ### Layer
 
 - **Controller**: Defines API endpoints and input validation.
 - **Service**: Contains business logic.
 - **Repository**: Handles database operations.
+- **Helper**: Handles the calculation logic.
 - **DTOs**: Used for clean API contracts.
 - **Exception Handling**: Centralized with `@RestControllerAdvice`.
 - **Logging**: Request/response logs using filter.
 
 ## API Endpoints
 
-### 1. Add Purchase
+### 1. Add Customer
+
+**POST** `customer-services/api/v1/customers/add`
+
+**Request Body:**
+
+```json
+{
+  "name": "Narmada",
+  "mobileNumber": "9876543210",
+  "emailId": "test@gmail.com"
+}
+```
+
+**Response Body:**
+
+```json
+{
+"customerId": "CUST0001",
+"message": "Customer Added Successfully", 
+"timestamp": 1756913346732
+
+}
+```
+
+### 2. Add Purchase
 
 **POST** `/customer-services/api/v1/add-purchase`
 
@@ -93,7 +129,7 @@ specific date range.
 
 ```json
 {
-  "customerId": "CUST123",
+  "customerId": "CUST0001",
   "amount": 100.0
 }
 ```
@@ -110,23 +146,33 @@ specific date range.
 
 ---
 
-### 2. Get Rewards
+### 3. Get Rewards
 
-**Get** `/customer-services/api/v1/get-rewards/CUST123?startDate=2025-08-20&endDate=2025-08-27`
+**Get** `/customer-services/api/v1/get-rewards/CUST0001?startDate=2025-08-20&endDate=2025-08-27`
 
 **Response Body:**
 
 ```json
 {
-  "customerId": "CUST123",
+  "customerId": "CUST0001",
+  "name": "Narmada",
+  "mobileNumber": "9876543210",
+  "emailId": "test@gmail.com",
   "monthlyRewards": [
     {
-      "month": "26-08-2025",
-      "points": 50
+      "month": "2025-09",
+      "points": 90
     }
   ],
-  "totalRewards": 50,
-  "timestamp": 1756198457347
+  "totalRewards": 90,
+  "recentPurchases": [
+    {
+      "purchaseDate": "2025-09-03",
+      "amount": 120.0,
+      "rewardPoints": 90
+    }
+  ],
+  "timestamp": 1756913366064
 }
 ```
 
