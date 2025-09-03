@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionController {
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
+        log.error("UserAlreadyExistsException occurred:{} ", ex.getMessage());
+        return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException ex) {
         String error = ex.getBindingResult().getAllErrors().get(0).getDefaultMessage();
@@ -44,7 +50,13 @@ public class GlobalExceptionController {
     @ExceptionHandler(InvalidDateException.class)
     public ResponseEntity<ErrorResponse> handleInvalidDateException(InvalidDateException ex) {
         log.error("InvalidDateException occurred:{} ", ex.getMessage());
-        return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
+        return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        log.error("UserNotFoundException occurred:{} ", ex.getMessage());
+        return new ResponseEntity<>(new ErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
 
