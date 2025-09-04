@@ -165,7 +165,7 @@ application starts.
 
 ### 3. Get Rewards
 
-**Get** `/customer-services/api/v1/get-rewards/CUST0001?startDate=2025-08-20&endDate=2025-08-27`
+**Get** `/customer-services/api/v1/get-rewards/CUST0001?startDate=2025-06-02&endDate=2025-09-04`
 
 **Response Body:**
 
