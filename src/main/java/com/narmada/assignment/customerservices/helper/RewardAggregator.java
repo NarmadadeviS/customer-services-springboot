@@ -14,9 +14,7 @@ public class RewardAggregator {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
 
     public List<MonthlyReward> calculateMonthlyRewards(List<Purchase> purchases) {
-
         Map<String, Integer> monthlyPointsMap = new LinkedHashMap<>();
-
 
         for (Purchase purchase : purchases) {
             String monthKey = purchase.getPurchaseDate().format(formatter);
@@ -30,7 +28,9 @@ public class RewardAggregator {
     }
 
     public int calculateTotalRewards(List<Purchase> purchases) {
-        return purchases.stream().mapToInt(Purchase::getRewardPoints).sum();
+        return purchases.stream()
+                .mapToInt(Purchase::getRewardPoints)
+                .sum();
     }
 
     public List<PurchaseSummary> getRecentPurchases(List<Purchase> purchases) {

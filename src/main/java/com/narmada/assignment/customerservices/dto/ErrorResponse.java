@@ -1,6 +1,7 @@
 package com.narmada.assignment.customerservices.dto;
 
 public class ErrorResponse {
+
     private String message;
     private final long timestamp = System.currentTimeMillis();
 

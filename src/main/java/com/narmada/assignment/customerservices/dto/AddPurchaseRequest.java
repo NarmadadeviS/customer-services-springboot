@@ -10,10 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddPurchaseRequest {
+
     @NotNull(message = "Customer ID is required")
     private String customerId;
-
     @Min(value = 1, message = "Amount should not be zero")
     private double amount;
-
 }

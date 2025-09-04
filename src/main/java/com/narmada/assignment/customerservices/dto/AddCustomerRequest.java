@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddCustomerRequest {
+
     @NotBlank(message = "Customer name cannot be empty. Kindly provide name")
     private String name;
 

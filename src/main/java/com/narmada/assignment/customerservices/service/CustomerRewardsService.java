@@ -25,7 +25,9 @@ public class CustomerRewardsService implements CustomerRewards {
     private final CommonValidator commonValidator;
 
     public CustomerRewardsService(PurchaseRepository purchaseRepository,
-                                  CustomerRepository customerRepository, RewardAggregator rewardAggregator, RewardCalculator rewardCalculator,
+                                  CustomerRepository customerRepository,
+                                  RewardAggregator rewardAggregator,
+                                  RewardCalculator rewardCalculator,
                                   CommonValidator commonValidator) {
         this.purchaseRepository = purchaseRepository;
         this.customerRepository = customerRepository;
@@ -61,17 +63,18 @@ public class CustomerRewardsService implements CustomerRewards {
         Customer customer = customerRepository.findByCustomerId(customerId)
                 .orElseThrow(() -> new NoDataFoundException("Customer not found"));
 
-        List<Purchase> purchases = purchaseRepository.findByCustomerIdAndPurchaseDateBetween(customerId, startDate, endDate);
+        List<Purchase> purchases = purchaseRepository.findByCustomerIdAndPurchaseDateBetween(customerId, startDate,
+                                                                                             endDate);
 
         if (purchases.isEmpty()) {
             throw new NoDataFoundException(customerId);
         }
 
         return new GetRewardsResponse(customerId, customer.getName(),
-                customer.getMobileNumber(),
-                customer.getEmailId(),
-                rewardAggregator.calculateMonthlyRewards(purchases),
-                rewardAggregator.calculateTotalRewards(purchases),
-                rewardAggregator.getRecentPurchases(purchases));
+                                      customer.getMobileNumber(),
+                                      customer.getEmailId(),
+                                      rewardAggregator.calculateMonthlyRewards(purchases),
+                                      rewardAggregator.calculateTotalRewards(purchases),
+                                      rewardAggregator.getRecentPurchases(purchases));
     }
 }

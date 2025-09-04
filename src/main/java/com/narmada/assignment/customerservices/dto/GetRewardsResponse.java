@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetRewardsResponse extends BaseResponse {
+
     private String customerId;
     private String name;
     private String mobileNumber;

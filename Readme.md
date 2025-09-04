@@ -82,8 +82,6 @@ specific date range.
 - customer details, Aggregates monthly and total reward points.
 - Returns a structured response DTO.
 
-
-
 ### Layer
 
 - **Controller**: Defines API endpoints and input validation.
@@ -93,6 +91,26 @@ specific date range.
 - **DTOs**: Used for clean API contracts.
 - **Exception Handling**: Centralized with `@RestControllerAdvice`.
 - **Logging**: Request/response logs using filter.
+
+## Preloaded Sample Data
+
+To ease testing and demonstration, sample data is inserted into the H2 database using a `CommandLineRunner` when the
+application starts.
+
+- **Sample Customer**
+  -- Insert customer
+  INSERT INTO customer (id, customer_id, name, mobile_number, email_id)
+  VALUES (1, 'CUST0001', 'Narmada', '9876543210', 'narmada@example.com');
+
+- **Sample Purchases**
+
+  -- Insert purchases
+  INSERT INTO purchases (id, customer_id, amount, purchase_date, reward_points)
+  VALUES
+  (1, 'CUST0001', 120.0, CURRENT_DATE - 7, 90),
+  (2, 'CUST0001', 75.0, CURRENT_DATE - 30, 25),
+  (3, 'CUST0001', 220.0, CURRENT_DATE - 60, 290),
+  (4, 'CUST0001', 130.0, CURRENT_DATE - 90, 110);
 
 ## API Endpoints
 
@@ -117,7 +135,6 @@ specific date range.
 "customerId": "CUST0001",
 "message": "Customer Added Successfully", 
 "timestamp": 1756913346732
-
 }
 ```
 
@@ -157,26 +174,71 @@ specific date range.
   "customerId": "CUST0001",
   "name": "Narmada",
   "mobileNumber": "9876543210",
-  "emailId": "test@gmail.com",
+  "emailId": "narmada@example.com",
   "monthlyRewards": [
     {
-      "month": "2025-09",
-      "points": 90
+      "month": "2025-08",
+      "points": 115
+    },
+    {
+      "month": "2025-07",
+      "points": 290
+    },
+    {
+      "month": "2025-06",
+      "points": 110
     }
   ],
-  "totalRewards": 90,
+  "totalRewards": 515,
   "recentPurchases": [
     {
-      "purchaseDate": "2025-09-03",
+      "purchaseDate": "2025-08-28",
       "amount": 120.0,
       "rewardPoints": 90
+    },
+    {
+      "purchaseDate": "2025-08-05",
+      "amount": 75.0,
+      "rewardPoints": 25
+    },
+    {
+      "purchaseDate": "2025-07-06",
+      "amount": 220.0,
+      "rewardPoints": 290
+    },
+    {
+      "purchaseDate": "2025-06-06",
+      "amount": 130.0,
+      "rewardPoints": 110
     }
   ],
-  "timestamp": 1756913366064
+  "timestamp": 1756956280399
 }
 ```
 
 ---
+
+## Screenshots
+
+### Maven Build Success
+
+![Build Success](screenshots/build_success.png)
+
+### Application Started
+
+![Build Success](screenshots/application_started.png)
+
+### Successful Postman Response - Add Customer
+
+![Add Customer](screenshots/postman_add_customer.png)
+
+### Successful Postman Response - Add Purchase
+
+![Add Purchase](screenshots/postman_add_purchase.png)
+
+### Successful Postman Response - Get Rewards
+
+![Get Rewards](screenshots/postman_get_rewards.png)
 
 ## Note:
 

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class BaseResponse {
-    private final long timestamp = System.currentTimeMillis();
 
+    private final long timestamp = System.currentTimeMillis();
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RewardCalculator {
+
     public int calculateRewardPoints(double purchaseAmount) {
         if (purchaseAmount <= 50) return 0;
 

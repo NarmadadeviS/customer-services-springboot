@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AddCustomerResponse extends BaseResponse {
-        private String customerId;
-        private String message;
+
+    private String customerId;
+    private String message;
 }

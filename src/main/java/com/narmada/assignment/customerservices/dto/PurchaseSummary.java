@@ -10,8 +10,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PurchaseSummary {
+
     private LocalDate purchaseDate;
     private double amount;
     private int rewardPoints;
-
 }

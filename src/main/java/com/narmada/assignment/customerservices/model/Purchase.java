@@ -13,15 +13,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Purchase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String customerId;
-
     private double amount;
-
     private LocalDate purchaseDate;
-
     private int rewardPoints;
 }

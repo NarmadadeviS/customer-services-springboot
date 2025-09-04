@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 @Component
 public class CommonValidator {
+
     public void validateDate(LocalDate startDate, LocalDate endDate) {
         if (startDate.isAfter(endDate)) {
             throw new InvalidDateException("Invalid Start / EndDate");
